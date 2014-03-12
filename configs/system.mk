@@ -1,4 +1,4 @@
-# Copyright (C) 2014 ParanoidSaberDroid Project
+# Copyright (C) 2014 AOSPAL Project
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -13,8 +13,7 @@
 # limitations under the License.
 
 
-
-include vendor/psd/vendor.mk
-include vendor/psd/configs/psd_overrides.mk
-include vendor/psd/configs/system.mk
-include vendor/psd/configs/version.mk
+# Kernel modules support
+PRODUCT_COPY_FILES += \
+    vendor/$(VENDOR)/prebuilt/etc/init.d/88LoadMod:system/etc/init.d/88LoadMod \
+    vendor/$(VENDOR)/prebuilt/etc/init.d/999Sync:system/etc/init.d/999Sync

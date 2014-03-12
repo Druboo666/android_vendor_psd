@@ -1,0 +1,12 @@
+#!/system/bin/sh
+# If kernel modules exsist Load them into the system for the kernel/ROM to be able to access
+# Note busybox required
+
+if [ -e /system/etc/init.d/89ModList ];
+then
+    MODLIST=`cat /system/etc/init.d/89ModList`;
+    for LOADMOD in $MODLIST;
+    do
+      modprobe $LOADMOD;
+    done;
+fi;

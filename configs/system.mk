@@ -15,5 +15,4 @@
 
 # Kernel modules support
 PRODUCT_COPY_FILES += \
-    vendor/$(VENDOR)/prebuilt/etc/init.d/88LoadMod:system/etc/init.d/88LoadMod \
     vendor/$(VENDOR)/prebuilt/etc/init.d/999Sync:system/etc/init.d/999Sync

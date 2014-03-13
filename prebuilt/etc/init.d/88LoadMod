@@ -2,11 +2,21 @@
 # If kernel modules exsist Load them into the system for the kernel/ROM to be able to access
 # Note busybox required
 
-if [ -e /system/etc/init.d/89ModList ];
+mdpath=/system/lib/modules;
+m=`find $mdpath -type f -name *.ko`;
+rmlist=`cat /system/etc/init.d/89ModList`;
+mlist=/system/etc/init.d/89ModList;
+if [ $m != "" ];
 then
-    MODLIST=`cat /system/etc/init.d/89ModList`;
-    for LOADMOD in $MODLIST;
-    do
-      modprobe $LOADMOD;
-    done;
+    if [ -e $mlist ];
+    then
+        for loadm in $rmlist;
+        do
+            # Use force loading module option.  This does not always work to load a module
+            # (e.i. most governors won't load as modules).
+            # Kernel must also have the force module loading option enabled.
+            # Otherwise attemping to force won't cause any harm if it fails
+            modprobe -f $loadm;
+        done;
+    fi;
 fi;

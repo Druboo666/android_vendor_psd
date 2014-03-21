@@ -8,3 +8,14 @@ PRODUCT_BUILD_PROP_OVERRIDES += \
 # Enable ADB authentication
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.adb.secure=1
+
+# Remix Packages
+PRODUCT_PACKAGES += \
+    LockClock \
+    Trebuchet \
+    DSPManager \
+    libcyanogen-dsp \
+    audio_effects.conf \
+    ScreenRecorder \
+    libscreenrecorder \
+    KernelTweaker

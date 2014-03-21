@@ -11,7 +11,7 @@ $(shell `export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:loc
 SM_AND_VERSION := $(filter 4.9 4.9.%,$(SM_AND))
 endif
 SM_AND_NAME := (SM-Toolchain)
-SM_AND_DATE := $(filter 20140% 20141%,$(SM_AND))
+SM_AND_DATE := $(filter 20130% 20131% 20140% 20141%,$(SM_AND))
 SM_AND_STATUS := $(filter (release) (prerelease) (experimental),$(SM_AND))
 SM_AND_VERSION := $(SM_AND_NAME)$(SM_AND_VERSION)($(SM_AND_DATE))-$(SM_AND_STATUS)
 endif
@@ -40,7 +40,7 @@ export GCC_COLORS := 'error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:
 SM_ARM_VERSION := $(filter 4.9 4.9.%,$(SM_ARM))
 endif
 SM_ARM_NAME := (SM-Toolchain)
-SM_ARM_DATE := $(filter 20140% 20141%,$(SM_ARM))
+SM_ARM_DATE := $(filter 20130% 20131% 20140% 20141%,$(SM_ARM))
 SM_ARM_STATUS := $(filter (release) (prerelease) (experimental), $(SM_ARM))
 SM_ARM_VERSION := $(SM_ARM_NAME)$(SM_ARM_VERSION)($(SM_ARM_DATE))-$(SM_ARM_STATUS)
 endif

@@ -1,0 +1,19 @@
+#!/system/bin/sh
+# If kernel modules exsist Load them into the system for the kernel/ROM to be able to access
+# Note busybox required
+# Some modules have to be installed with insmod before modprobe can be used
+# Because of this there's no current way to make this script universal
+
+if [ -e /system/etc/init.d/89InsMod ];
+then
+    /system/etc/init.d/89InsMod;
+    mount -o remount,rw -t ext4 /system;
+    rm /system/etc/init.d/89InsMod;
+    mount -o remount,ro -t ext4 /system;
+fi;
+
+# Load the modules now that they're installed
+for mprobe in cfq_iosched cpufreq_conservative cpufreq_performance cpufreq_powersave cpufreq_userspace deadline_iosched mmc_block_test scsi_wait_scan test_iosched;
+do
+    modprobe $mprobe;
+done;

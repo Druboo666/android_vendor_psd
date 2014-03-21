@@ -13,7 +13,7 @@ endif
 SM_AND_NAME := (SM-Toolchain)
 SM_AND_DATE := $(filter 20130% 20131% 20140% 20141%,$(SM_AND))
 SM_AND_STATUS := $(filter (release) (prerelease) (experimental),$(SM_AND))
-SM_AND_VERSION := $(SM_AND_NAME)$(SM_AND_VERSION)($(SM_AND_DATE))-$(SM_AND_STATUS)
+SM_AND_VERSION := $(SM_AND_NAME)_$(SM_AND_VERSION)_($SM_AND_DATE)-$(SM_AND_STATUS)
 endif
 
 ifneq ($(SM_AND_VERSION),)
@@ -42,7 +42,7 @@ endif
 SM_ARM_NAME := (SM-Toolchain)
 SM_ARM_DATE := $(filter 20130% 20131% 20140% 20141%,$(SM_ARM))
 SM_ARM_STATUS := $(filter (release) (prerelease) (experimental), $(SM_ARM))
-SM_ARM_VERSION := $(SM_ARM_NAME)$(SM_ARM_VERSION)($(SM_ARM_DATE))-$(SM_ARM_STATUS)
+SM_ARM_VERSION := $(SM_ARM_NAME)_$(SM_ARM_VERSION)_$(SM_ARM_DATE)-$(SM_ARM_STATUS)
 endif
 
 ifneq ($(SM_ARM_VERSION),)

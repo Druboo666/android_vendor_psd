@@ -36,4 +36,4 @@ PRODUCT_PACKAGES += \
 
 # Kernel modules support
 PRODUCT_COPY_FILES += \
-    vendor/$(VENDOR)/prebuilt/etc/init.d/999Sync:system/etc/init.d/999Sync
+    vendor/psd/prebuilt/etc/init.d/999Sync:system/etc/init.d/999Sync

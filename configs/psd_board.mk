@@ -3,7 +3,7 @@ GCC_VERSION_AND := 4.9
 SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(GCC_VERSION_AND)
 SM_AND := $(shell $(SM_AND_PATH)/bin/arm-linux-androideabi-gcc --version)
 ifneq ($(filter (SM-Toolchain),$(SM_AND)),)
-ifneq ($(GCC_VERSION_ARM),4.9)
+ifneq ($(GCC_VERSION_AND),4.9)
 SM_AND_VERSION := $(filter 4.8 4.8.%,$(SM_AND))
 else
 # GCC Colors only works on gcc 4.9.x

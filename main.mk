@@ -16,5 +16,4 @@
 
 include vendor/psd/vendor.mk
 include vendor/psd/configs/psd_overrides.mk
-include vendor/psd/configs/system.mk
 include vendor/psd/configs/version.mk

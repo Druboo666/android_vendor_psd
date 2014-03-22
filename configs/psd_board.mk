@@ -3,7 +3,7 @@ GCC_VERSION_AND := 4.8
 SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(GCC_VERSION_AND)
 SM_AND := $(shell $(SM_AND_PATH)/bin/arm-linux-androideabi-gcc --version)
 ifneq ($(filter (SM-Toolchain),$(SM_AND)),)
-ifneq ($(GCC_VERSION_ARM),4.9)
+ifneq ($(GCC_VERSION_AND),4.9)
 SM_AND_VERSION := $(filter 4.8 4.8.%,$(SM_AND))
 else
 # GCC Colors only works on gcc 4.9.x
@@ -11,9 +11,9 @@ $(shell `export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:loc
 SM_AND_VERSION := $(filter 4.9 4.9.%,$(SM_AND))
 endif
 SM_AND_NAME := (SM-Toolchain)
-SM_AND_DATE := $(filter 20140% 20141%,$(SM_AND))
+SM_AND_DATE := $(filter 20130% 20131% 20140% 20141%,$(SM_AND))
 SM_AND_STATUS := $(filter (release) (prerelease) (experimental),$(SM_AND))
-SM_AND_VERSION := $(SM_AND_NAME)$(SM_AND_VERSION)($(SM_AND_DATE))-$(SM_AND_STATUS)
+SM_AND_VERSION := $(SM_AND_NAME)_$(SM_AND_VERSION)_$(SM_AND_DATE)-$(SM_AND_STATUS)
 endif
 
 ifneq ($(SM_AND_VERSION),)
@@ -40,9 +40,9 @@ export GCC_COLORS := 'error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:
 SM_ARM_VERSION := $(filter 4.9 4.9.%,$(SM_ARM))
 endif
 SM_ARM_NAME := (SM-Toolchain)
-SM_ARM_DATE := $(filter 20140% 20141%,$(SM_ARM))
+SM_ARM_DATE := $(filter 20130% 20131% 20140% 20141%,$(SM_ARM))
 SM_ARM_STATUS := $(filter (release) (prerelease) (experimental), $(SM_ARM))
-SM_ARM_VERSION := $(SM_ARM_NAME)$(SM_ARM_VERSION)($(SM_ARM_DATE))-$(SM_ARM_STATUS)
+SM_ARM_VERSION := $(SM_ARM_NAME)_$(SM_ARM_VERSION)_$(SM_ARM_DATE)-$(SM_ARM_STATUS)
 endif
 
 ifneq ($(SM_ARM_VERSION),)

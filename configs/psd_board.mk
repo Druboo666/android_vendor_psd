@@ -1,7 +1,11 @@
+# We need this to build with Host 4.8.3 linux-i386 toolchains
+include vendor/psd/prebuilt/common/build/host/i386/pthread.mk
+
 # All Official PSD ROMs use SM 4.8.3.  Non-official can use Google 4.8 or change version here
 GCC_VERSION_AND := 4.8
 SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(GCC_VERSION_AND)
 SM_AND := $(shell $(SM_AND_PATH)/bin/arm-linux-androideabi-gcc --version)
+
 ifneq ($(filter (SM-Toolchain) (SaberMod%),$(SM_AND)),)
 ifneq ($(GCC_VERSION_AND),4.9)
 SM_AND_VERSION := $(filter 4.8 4.8.%,$(SM_AND))

@@ -31,8 +31,7 @@ PRODUCT_PACKAGES += \
     libcyanogen-dsp \
     audio_effects.conf \
     ScreenRecorder \
-    libscreenrecorder \
-    KernelTweaker
+    libscreenrecorder
 
 # Kernel modules support
 PRODUCT_COPY_FILES += \

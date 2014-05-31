@@ -1,5 +1,7 @@
-# All Official PSD ROMs use SM 4.8.3. Non-official can use Uberutils' 4.8 or change version here
+# Toolchain version for ROM building
 GCC_VERSION_AND := 4.8
+# Toolchain version for kernel building
+GCC_VERSION_ARM := 4.8
 SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(GCC_VERSION_AND)
 SM_AND := $(shell $(SM_AND_PATH)/bin/arm-linux-androideabi-gcc --version)
 ifneq ($(filter (SM-Toolchain) (SaberMod%),$(SM_AND)),)
@@ -24,9 +26,6 @@ ifneq ($(SM_AND_VERSION),)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.android=$(SM_AND_VERSION)
 endif
-
-# Toolchain version for kernel building
-GCC_VERSION_ARM := 4.8
 
 SM_ARM_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-eabi-$(GCC_VERSION_ARM)
 SM_ARM := $(shell $(SM_ARM_PATH)/bin/arm-eabi-gcc --version)

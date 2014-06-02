@@ -1,7 +1,7 @@
 # Toolchain version for ROM building
 GCC_VERSION_AND := 4.8
 # Toolchain version for kernel building
-GCC_VERSION_ARM := 4.10
+GCC_VERSION_ARM := 4.8
 SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(GCC_VERSION_AND)
 SM_AND := $(shell $(SM_AND_PATH)/bin/arm-linux-androideabi-gcc --version)
 ifneq ($(filter (SM-Toolchain) (SaberMod%),$(SM_AND)),)

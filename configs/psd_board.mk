@@ -44,3 +44,20 @@ ifneq ($(SM_ARM_VERSION),)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.arm=$(SM_ARM_VERSION)
 endif
+
+# begin pthread support
+# This patch also allows more modules to be added to THREADS_MODULE_LIST if needed in future updates.
+# And also in other places like BoardConfig.mk by using "THREADS_MODULE_LIST += insert_module_name"
+THREADS_MODULE_LIST := oatdump dex2oat
+# end pthread support
+
+# begin graphite support
+# This patch also allows more modules to be added to DISABLE_GRAPHITE_MODULES if needed in future updates.
+# And also in other places like BoardConfig.mk by using "DISABLE_GRAPHITE_MODULES += insert_module_name"
+DISABLE_GRAPHITE_MODULES := libstagefright_amrwbenc \
+	libFFTEm \
+	libwebviewchromium \
+	libstagefright_mp3dec \
+	libjni_filtershow_filters \
+	libwebrtc_spl
+# end graphite support

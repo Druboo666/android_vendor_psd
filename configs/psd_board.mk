@@ -18,6 +18,10 @@ else
 SM_AND_VERSION := $(SM_AND_NAME)-$(SM_AND_DATE)-$(SM_AND_STATUS)
 endif
 endif
+ifneq ($(SM_AND_VERSION),)
+PRODUCT_PROPERTY_OVERRIDES += \
+    ro.sm.android=$(SM_AND_VERSION)
+endif
 endif
 
 ifndef GCC_VERSION_ARM
@@ -38,11 +42,6 @@ SM_ARM_VERSION := $(SM_ARM_NAME)_$(SM_ARM_VERSION)_$(SM_ARM_DATE)-$(SM_ARM_STATU
 else
 SM_ARM_VERSION := $(SM_ARM_NAME)-$(SM_ARM_DATE)-$(SM_ARM_STATUS)
 endif
-endif
-
-ifneq ($(SM_AND_VERSION),)
-PRODUCT_PROPERTY_OVERRIDES += \
-    ro.sm.android=$(SM_AND_VERSION)
 endif
 
 ifneq ($(SM_ARM_VERSION),)

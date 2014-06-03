@@ -1,5 +1,5 @@
 # Call product first and foremost
-# Then check for deivce settings
+# Then check for device settings
 
 $(call inherit-product-if-exists, vendor/psd/products/$(TARGET_PRODUCT)_hooks.mk)
 

@@ -61,6 +61,13 @@ ifndef THREADS_MODULE_LIST
 else
 	THREADS_MODULE_LIST += oatdump dex2oat
 endif
+
+# Use C and CPP flag -pthread
+ifndef THREAD_FLAGS
+	THREAD_FLAGS := -pthread
+else
+	THREAD_FLAGS += -pthread
+endif
 # end pthread support
 
 # begin graphite support

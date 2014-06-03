@@ -23,7 +23,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.arm=$(SM_ARM_VERSION)
 endif
 
-# Set -fstrict-aliasing flag to global for hammerhead
+# Set -fstrict-aliasing flag to global for flo
 MAKE_STRICT_GLOBAL := true
 # Optimize memory
 OPT_MEMORY := true

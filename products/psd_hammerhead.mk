@@ -35,3 +35,7 @@ USING_SABER_LINUX := yes
 # Set -fstrict-aliasing flag to global for hammerhead (for real this time)
 MAKE_STRICT_GLOBAL := true
 
+# Loading modules are sometimes needed for bug fixes in the kernel, but we need to load them with ROM scripts
+PRODUCT_COPY_FILES += \
+	vendor/psd/prebuilt/device/hammerhead/etc/init.d/88LoadMod:system/etc/init.d/88LoadMod \
+	vendor/psd/prebuilt/device/hammerhead/etc/init.d/89InsMod:system/etc/init.d/89InsMod

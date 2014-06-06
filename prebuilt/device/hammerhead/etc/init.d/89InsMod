@@ -6,7 +6,7 @@ mdinstall=/system/lib/modules;
 if [ $m != "" ];
 then
     # Install modules before modprobe
-    for installm in $mdinstall/cfq_iosched.ko $mdinstall/cpufreq_conservative.ko $mdinstall/cpufreq_performance.ko $mdinstall/cpufreq_powersave.ko $mdinstall/cpufreq_userspace.ko $mdinstall/deadline_iosched.ko $mdinstall/mmc_block_test.ko $mdinstall/scsi_wait_scan.ko $mdinstall/test_iosched.ko;
+    for installm in $mdinstall/scsi_wait_scan.ko $mdinstall/diagchar.ko;
     do
         insmod $installm;
     done;

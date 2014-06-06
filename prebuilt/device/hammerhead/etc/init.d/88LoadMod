@@ -13,7 +13,7 @@ then
 fi;
 
 # Load the modules now that they're installed
-for mprobe in cfq_iosched cpufreq_conservative cpufreq_performance cpufreq_powersave cpufreq_userspace deadline_iosched mmc_block_test scsi_wait_scan test_iosched;
+for mprobe in scsi_wait_scan diagchar;
 do
     modprobe $mprobe;
 done;

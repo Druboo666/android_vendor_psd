@@ -1,6 +1,28 @@
+#
+# Copyright (C) 2014 Paul Beeler
+# Copyright (C) 2014 AOSPAL Paranoid SaberDroid
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+#
+
+# begin MODULAR customizations
+# Here will contain modular customizations for various ROM features or fixes.
+# Most if not all of these features are disabled by default unless envoked elsewhere.
+# Adding more modules here (device specific or not), will remain compatible accrossed all devices.
+#
+
 # Call product first and foremost
 # Then check for device settings
-
 $(call inherit-product-if-exists, vendor/psd/products/$(TARGET_PRODUCT)_hooks.mk)
 
 ifndef GCC_VERSION_AND
@@ -8,6 +30,7 @@ ifndef GCC_VERSION_AND
 GCC_VERSION_AND := 4.8
 SM_AND_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-linux-androideabi-$(GCC_VERSION_AND)
 SM_AND := $(shell $(SM_AND_PATH)/bin/arm-linux-androideabi-gcc --version)
+
 ifneq ($(filter (SM-Toolchain) (SaberMod%),$(SM_AND)),)
 # GCC Colors only works on gcc >=4.9.x
 $(shell `export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'`)
@@ -15,12 +38,14 @@ SM_AND_VERSION := $(filter 4.8 4.8.% 4.9 4.9.% 4.10 4.10.%,$(SM_AND))
 SM_AND_NAME := $(filter (SM-Toolchain) (SaberMod%),$(SM_AND))
 SM_AND_DATE := $(filter 20130% 20131% 20140% 20141%,$(SM_AND))
 SM_AND_STATUS := $(filter (release) (prerelease) (experimental),$(SM_AND))
+
 ifeq ($(filter (SaberMod%),$(SM_AND)),)
 SM_AND_VERSION := $(SM_AND_NAME)_$(SM_AND_VERSION)_$(SM_AND_DATE)-$(SM_AND_STATUS)
 else
 SM_AND_VERSION := $(SM_AND_NAME)-$(SM_AND_DATE)-$(SM_AND_STATUS)
 endif
 endif
+
 ifneq ($(SM_AND_VERSION),)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.android=$(SM_AND_VERSION)
@@ -40,6 +65,7 @@ SM_ARM_VERSION := $(filter 4.8 4.8.% 4.9 4.9.% 4.10 4.10.%,$(SM_ARM))
 SM_ARM_NAME := $(filter (SM-Toolchain) (SaberMod%),$(SM_ARM))
 SM_ARM_DATE := $(filter 20130% 20131% 20140% 20141%,$(SM_ARM))
 SM_ARM_STATUS := $(filter (release) (prerelease) (experimental), $(SM_ARM))
+
 ifeq ($(filter (SaberMod%),$(SM_ARM)),)
 SM_ARM_VERSION := $(SM_ARM_NAME)_$(SM_ARM_VERSION)_$(SM_ARM_DATE)-$(SM_ARM_STATUS)
 else
@@ -53,39 +79,5 @@ PRODUCT_PROPERTY_OVERRIDES += \
 endif
 endif
 
-# begin pthread support
-# This patch also allows more modules to be added to THREADS_MODULE_LIST if needed in future updates.
-# And also in the device product makefile vendor/psd/products/psd_device.mk by adding "THREADS_MODULE_LIST := insert_module_name"
-ifndef THREADS_MODULE_LIST
-	THREADS_MODULE_LIST := oatdump dex2oat
-else
-	THREADS_MODULE_LIST += oatdump dex2oat
-endif
-
-# Use C and CPP flag -pthread
-ifndef THREAD_FLAGS
-	THREAD_FLAGS := -pthread
-else
-	THREAD_FLAGS += -pthread
-endif
-# end pthread support
-
-# begin graphite support
-# This patch also allows more modules to be added to DISABLE_GRAPHITE_MODULES if needed in future updates.
-# And also in the device product makefile vendor/psd/products/psd_device.mk by adding "DISABLE_GRAPHITE_MODULES := insert_module_name"
-ifndef DISABLE_GRAPHITE_MODULES
-	DISABLE_GRAPHITE_MODULES := libstagefright_amrwbenc \
-		libFFTEm \
-		libwebviewchromium \
-		libstagefright_mp3dec \
-		libjni_filtershow_filters \
-		libwebrtc_spl
-else
-	DISABLE_GRAPHITE_MODULES += libstagefright_amrwbenc \
-		libFFTEm \
-		libwebviewchromium \
-		libstagefright_mp3dec \
-		libjni_filtershow_filters \
-		libwebrtc_spl
-endif
-# end graphite support
+# Call psd modular customizations
+$(call inherit-product, vendor/psd/configs/psd_modular.mk)

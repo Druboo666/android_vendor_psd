@@ -22,12 +22,3 @@ ifneq ($(SM_ARM_VERSION),)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.arm=$(SM_ARM_VERSION)
 endif
-
-# Set -fstrict-aliasing flag to global
-MAKE_STRICT_GLOBAL := true
-# Optimize memory
-OPT_MEMORY := true
-# Enable graphite
-ENABLE_GRAPHITE := true
-# Saber linux toolchains
-USING_SABER_LINUX := yes

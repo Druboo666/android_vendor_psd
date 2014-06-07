@@ -39,3 +39,4 @@ MAKE_STRICT_GLOBAL := true
 PRODUCT_COPY_FILES += \
 	vendor/psd/prebuilt/device/hammerhead/etc/init.d/88LoadMod:system/etc/init.d/88LoadMod \
 	vendor/psd/prebuilt/device/hammerhead/etc/init.d/89InsMod:system/etc/init.d/89InsMod
+

@@ -23,6 +23,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.arm=$(SM_ARM_VERSION)
 endif
 
+# Disable strict aliasing modules
+DISABLE_STRICT_WEBKIT += \
+        third_party_WebKit_Source_platform_blink_platform_gyp
+
+DISABLE_STRICT_QCOM += \
+        mm-vdec-omx-test
+
 # Set -fstrict-aliasing flag to global for flo
 MAKE_STRICT_GLOBAL := true
 # Optimize memory

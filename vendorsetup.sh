@@ -1,3 +1,13 @@
+add_lunch_combo psd_deb-userdebug
+add_lunch_combo psd_grouper-userdebug
+add_lunch_combo psd_flo-userdebug
+add_lunch_combo psd_hammerhead-userdebug
+add_lunch_combo psd_tilapia-userdebug
+add_lunch_combo psd_mako-userdebug
+add_lunch_combo psd_manta-userdebug
+add_lunch_combo psd_maguro-userdebug
+add_lunch_combo psd_toro-userdebug
+add_lunch_combo psd_toroplus-userdebug
 
 # Add the lunch combo here if someone wants odex
 add_lunch_combo psd_hammerhead-user

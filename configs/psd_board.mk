@@ -25,7 +25,7 @@
 # Call psd modular customizations
 $(call inherit-product, vendor/psd/configs/psd_modular.mk)
 # Then check for device settings
-$(call inherit-product-if-exists, vendor/psd/products/$(TARGET_PRODUCT)_hooks.mk)
+$(call inherit-product-if-exists, vendor/psd/products/$(TARGET_PRODUCT).mk)
 
 ifndef GCC_VERSION_AND
 # GCC_VERSION_AND is not defined, set to 4.8 default

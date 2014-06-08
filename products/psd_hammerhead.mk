@@ -1,3 +1,7 @@
+# Device info
+TARGET_PRODUCT := pa_hammerhead
+PSD_TARGET_PRODUCT := psd_hammerhead
+
 # Use 4.10.x for the kernel
 GCC_VERSION_ARM := 4.10
 # Override ARM settings
@@ -40,3 +44,5 @@ PRODUCT_COPY_FILES += \
 	vendor/psd/prebuilt/device/hammerhead/etc/init.d/88LoadMod:system/etc/init.d/88LoadMod \
 	vendor/psd/prebuilt/device/hammerhead/etc/init.d/89InsMod:system/etc/init.d/89InsMod
 
+# Call pa device
+$(call inherit-product, vendor/pa/products/pa_hammerhead.mk)

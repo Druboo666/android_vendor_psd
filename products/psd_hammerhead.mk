@@ -1,5 +1,4 @@
 # Device info
-TARGET_PRODUCT := pa_hammerhead
 PSD_TARGET_PRODUCT := psd_hammerhead
 
 # Use 4.10.x for the kernel

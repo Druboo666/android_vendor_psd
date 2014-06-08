@@ -16,6 +16,3 @@ include vendor/psd/configs/psd_board.mk
 include vendor/psd/vendor.mk
 include vendor/psd/configs/psd_overrides.mk
 include vendor/psd/configs/version.mk
-
-# Include PA vendor
-include vendor/pa/main.mk

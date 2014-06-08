@@ -26,12 +26,19 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.arm=$(SM_ARM_VERSION)
 endif
 
+# For categories set with ":=" since we are just adding it to the common list the bulid repo uses DISABLE_STRICT_MODULES
+# Common cagetories from the generic configuration will not be needed again since they are already added into the common list.
 # Disable strict aliasing modules
-DISABLE_STRICT_WEBKIT += \
+DISABLE_STRICT_WEBKIT := \
         third_party_WebKit_Source_platform_blink_platform_gyp
 
-DISABLE_STRICT_QCOM += \
+DISABLE_STRICT_QCOM := \
         mm-vdec-omx-test
+        
+# Add other categories to common list to pass onto build repo
+DISABLE_STRICT_MODULES += \
+		$(DISABLE_STRICT_WEBKIT) \
+		$(DISABLE_STRICT_QCOM)
 
 # Set -fstrict-aliasing flag to global for flo
 MAKE_STRICT_GLOBAL := true

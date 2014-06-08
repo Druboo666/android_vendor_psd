@@ -111,10 +111,6 @@ DISABLE_STRICT_EXT := \
 	libext2_blkid \
 	libext2_blkid_host
 
-# qcom
-DISABLE_STRICT_QCOM := \
-	libqcomvisualizer
-
 # Add the other categories last
 DISABLE_STRICT_MODULES += \
 	$(DISABLE_STRICT_CLANG) \

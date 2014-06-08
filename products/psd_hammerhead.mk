@@ -27,6 +27,13 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.arm=$(SM_ARM_VERSION)
 endif
 
+# qcom
+DISABLE_STRICT_QCOM := \
+	libqcomvisualizer
+
+DISABLE_STRICT_MODULES += \
+	$(DISABLE_STIRCT_QCOM)
+
 # Optimize memory
 OPT_MEMORY := true
 

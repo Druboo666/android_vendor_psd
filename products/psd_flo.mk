@@ -27,8 +27,7 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.arm=$(SM_ARM_VERSION)
 endif
 
-# Include Paranoid SaberDroid common configuration
-include vendor/psd/main.mk
+include vendor/psd/configs/psd_modular.mk
 
 #Disable strict aliasing modules
 DISABLE_STRICT_WEBKIT := \
@@ -50,6 +49,9 @@ OPT_MEMORY := true
 ENABLE_GRAPHITE := true
 # Saber linux toolchains
 USING_SABER_LINUX := yes
+
+# Include Paranoid SaberDroid common configuration
+include vendor/psd/main.mk
 
 # Call pa device
 $(call inherit-product, vendor/pa/products/pa_flo.mk)

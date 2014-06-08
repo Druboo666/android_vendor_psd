@@ -22,13 +22,12 @@ SM_ARM_VERSION := $(SM_ARM_NAME)-$(SM_ARM_DATE)-$(SM_ARM_STATUS)
 endif
 endif
 
-# Include Paranoid SaberDroid common configuration before device modules can be added
-include vendor/psd/main.mk
-
 ifneq ($(SM_ARM_VERSION),)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.arm=$(SM_ARM_VERSION)
 endif
+
+include vendor/psd/configs/psd_modular.mk
 
 # qcom
 DISABLE_STRICT_QCOM := \
@@ -36,6 +35,9 @@ DISABLE_STRICT_QCOM := \
 
 DISABLE_STRICT_MODULES += \
 	$(DISABLE_STIRCT_QCOM)
+
+# Include Paranoid SaberDroid common configuration before device modules can be added
+include vendor/psd/main.mk
 
 # Optimize memory
 OPT_MEMORY := true

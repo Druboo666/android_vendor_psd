@@ -34,7 +34,7 @@ DISABLE_STRICT_QCOM := \
 	libqcomvisualizer
 
 DISABLE_STRICT_MODULES += \
-	$(DISABLE_STIRCT_QCOM)
+	$(DISABLE_STRICT_QCOM)
 
 # Include Paranoid SaberDroid common configuration before device modules can be added
 include vendor/psd/main.mk

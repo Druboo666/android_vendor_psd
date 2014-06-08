@@ -21,7 +21,9 @@
 # Adding more modules here (device specific or not), will remain compatible accrossed all devices.
 #
 
-# Call product first and foremost
+# Call modular customizations first, then product so we can add onto the modules if needed
+# Call psd modular customizations
+$(call inherit-product, vendor/psd/configs/psd_modular.mk)
 # Then check for device settings
 $(call inherit-product-if-exists, vendor/psd/products/$(TARGET_PRODUCT)_hooks.mk)
 
@@ -78,6 +80,3 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.arm=$(SM_ARM_VERSION)
 endif
 endif
-
-# Call psd modular customizations
-$(call inherit-product, vendor/psd/configs/psd_modular.mk)

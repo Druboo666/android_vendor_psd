@@ -21,12 +21,6 @@
 # Adding more modules here (device specific or not), will remain compatible accrossed all devices.
 #
 
-# Call modular customizations first, then product so we can add onto the modules if needed
-# Call psd modular customizations
-include vendor/psd/configs/psd_modular.mk
-# Then check for device settings
-$(call inherit-product-if-exists, vendor/psd/products/$(TARGET_PRODUCT).mk)
-
 ifndef GCC_VERSION_AND
 # GCC_VERSION_AND is not defined, set to 4.8 default
 GCC_VERSION_AND := 4.8

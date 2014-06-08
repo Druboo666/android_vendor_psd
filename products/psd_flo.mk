@@ -26,9 +26,10 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.arm=$(SM_ARM_VERSION)
 endif
 
-# For categories set with ":=" since we are just adding it to the common list the bulid repo uses DISABLE_STRICT_MODULES
-# Common cagetories from the generic configuration will not be needed again since they are already added into the common list.
-# Disable strict aliasing modules
+# Include Paranoid SaberDroid common configuration
+include vendor/psd/main.mk
+
+#Disable strict aliasing modules
 DISABLE_STRICT_WEBKIT := \
         third_party_WebKit_Source_platform_blink_platform_gyp
 
@@ -48,9 +49,6 @@ OPT_MEMORY := true
 ENABLE_GRAPHITE := true
 # Saber linux toolchains
 USING_SABER_LINUX := yes
-
-# Include Paranoid SaberDroid common configuration
-include vendor/psd/main.mk
 
 # Call pa device
 $(call inherit-product, vendor/pa/products/pa_flo.mk)

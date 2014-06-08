@@ -22,6 +22,9 @@ SM_ARM_VERSION := $(SM_ARM_NAME)-$(SM_ARM_DATE)-$(SM_ARM_STATUS)
 endif
 endif
 
+# Include Paranoid SaberDroid common configuration before device modules can be added
+include vendor/psd/main.mk
+
 ifneq ($(SM_ARM_VERSION),)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.arm=$(SM_ARM_VERSION)
@@ -50,9 +53,6 @@ MAKE_STRICT_GLOBAL := true
 PRODUCT_COPY_FILES += \
 	vendor/psd/prebuilt/device/hammerhead/etc/init.d/88LoadMod:system/etc/init.d/88LoadMod \
 	vendor/psd/prebuilt/device/hammerhead/etc/init.d/89InsMod:system/etc/init.d/89InsMod
-
-# Include Paranoid SaberDroid common configuration
-include vendor/psd/main.mk
 
 # Call pa device
 $(call inherit-product, vendor/pa/products/pa_hammerhead.mk)

@@ -12,6 +12,7 @@
 # See the License for the specific language governing permissions and
 # limitations under the License.
 
+include vendor/psd/configs/psd_modular.mk
 include vendor/psd/configs/psd_board.mk
 include vendor/psd/vendor.mk
 include vendor/psd/configs/psd_overrides.mk

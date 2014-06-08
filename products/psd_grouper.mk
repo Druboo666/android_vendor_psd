@@ -1,3 +1,4 @@
+TARGET_PRODUCT := pa_grouper
 # Device info
 PSD_TARGET_PRODUCT := psd_grouper
 

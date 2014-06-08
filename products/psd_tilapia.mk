@@ -1,3 +1,4 @@
+TARGET_PRODUCT := pa_tilapia
 # Device info
 PSD_TARGET_PRODUCT := psd_tilapia
 

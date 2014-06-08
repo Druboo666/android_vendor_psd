@@ -1,3 +1,4 @@
+TARGET_PRODUCT := pa_maguro
 # Device info
 PSD_TARGET_PRODUCT := psd_maguro
 

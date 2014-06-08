@@ -1,3 +1,4 @@
+TARGET_PRODUCT := pa_deb
 # Device info
 PSD_TARGET_PRODUCT := psd_deb
 

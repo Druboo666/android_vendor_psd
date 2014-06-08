@@ -1,3 +1,4 @@
+TARGET_PRODUCT := pa_mako
 # Device info
 PSD_TARGET_PRODUCT := psd_mako
 

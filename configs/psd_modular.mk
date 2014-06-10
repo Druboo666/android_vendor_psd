@@ -104,7 +104,8 @@ DISABLE_STRICT_CLANG := \
 DISABLE_STRICT_WEBKIT := \
 	third_party_WebKit_Source_core_webcore_platform_gyp \
 	third_party_WebKit_Source_core_webcore_remaining_gyp \
-	third_party_WebKit_Source_core_webcore_derived_gyp
+	third_party_WebKit_Source_core_webcore_derived_gyp \
+	third_party_WebKit_Source_platform_blink_platform_gyp
 
 # ext fs
 DISABLE_STRICT_EXT := \

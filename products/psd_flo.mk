@@ -1,7 +1,4 @@
-TARGET_PRODUCT := pa_flo
-# Device info
-PSD_TARGET_PRODUCT := psd_flo
-
+ifeq (psd_flo,$(TARGET_PRODUCT))
 # Use 4.10.x for the kernel
 GCC_VERSION_ARM := 4.10
 # Override ARM settings
@@ -53,5 +50,13 @@ USING_SABER_LINUX := yes
 # Include Paranoid SaberDroid common configuration
 include vendor/psd/main.mk
 
-# Call pa device
-$(call inherit-product, vendor/pa/products/pa_flo.mk)
+# Inherit AOSP device configuration
+$(call inherit-product, device/asus/flo/full_flo.mk)
+
+# Override AOSP build properties
+PRODUCT_NAME := psd_flo
+PRODUCT_BRAND := Google
+PRODUCT_MODEL := Nexus 7
+PRODUCT_MANUFACTURER := Asus
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=razor BUILD_FINGERPRINT="google/razor/flo:4.4.2/KOT49H/937116:user/release-keys" PRIVATE_BUILD_DESC="razor-user 4.4 KOT49H 937116 release-keys"
+endif

@@ -1,7 +1,4 @@
-TARGET_PRODUCT := pa_hammerhead
-# Device info
-PSD_TARGET_PRODUCT := psd_hammerhead
-
+ifeq (psd_hammerhead,$(TARGET_PRODUCT))
 # Use 4.10.x for the kernel
 GCC_VERSION_ARM := 4.10
 # Override ARM settings
@@ -58,3 +55,14 @@ PRODUCT_COPY_FILES += \
 
 # Call pa device
 $(call inherit-product, vendor/pa/products/pa_hammerhead.mk)
+
+# Inherit AOSP device configuration
+$(call inherit-product, device/lge/hammerhead/full_hammerhead.mk)
+
+# Override AOSP build properties
+PRODUCT_NAME := psd_hammerhead
+PRODUCT_BRAND := Google
+PRODUCT_MODEL := Nexus 5
+PRODUCT_MANUFACTURER := LGE
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=hammerhead BUILD_FINGERPRINT="google/hammerhead/hammerhead:4.4.3/KTU84M/1158763:user/release-keys" PRIVATE_BUILD_DESC="hammerhead-user 4.4.3 KTU84M 1158763 release-keys"
+endif

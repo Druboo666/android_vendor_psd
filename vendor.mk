@@ -1,5 +1,5 @@
 # Export rom name
-export PSD := psd
+export VENDOR := psd
 
 # PSD version info
 PSD_VERSION_MAJOR := 5

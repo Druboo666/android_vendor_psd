@@ -99,7 +99,6 @@ DISABLE_STRICT_CLANG := \
 	libclangAnalysis \
 	libclangEdit \
 	libclangAST
-
 # WebKit
 DISABLE_STRICT_WEBKIT := \
 	third_party_WebKit_Source_core_webcore_platform_gyp \

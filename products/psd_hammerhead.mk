@@ -36,7 +36,9 @@ DISABLE_STRICT_MODULES += \
 NO_ERROR_UP := \
 	liboverlay \
 	mm-jpeg-interface-test \
-	gralloc.msm8974
+	gralloc.msm8974 \
+	libmemalloc \
+	hwcomposer.msm8974
 
 # Include Paranoid SaberDroid common configuration
 include vendor/psd/main.mk

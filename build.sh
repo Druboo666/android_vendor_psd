@@ -149,10 +149,10 @@ DEVICE="$1"
          clear
  
 # we're done
-   echo -e ""
-   echo -e ""
+   echo -e "";
+   echo -e "";
    echo -e "Finished building Paranoid SaberDroid.";
    echo -e "If for some reason your build failed,";
-   echo -e "please check the 'build-logs' directory to figure out why."
-   echo -e ""
+   echo -e "please check the 'build-logs' directory to figure out why.";
+   echo -e "";
    echo -e ""

@@ -44,16 +44,22 @@
 DEVICE="$1"
  
 # start
-   echo -e "Building Paranoid SaberDroid for $DEVICE";
-   echo -e "Building AOSPAL $PSD_TAG $PSD_MAJOR.$PSD_MINOR for $DEVICE";
-   echo -e "$Start time: $(date)"
+   echo -e "";
+   echo -e "";
+   echo -e "Building Paranoid SaberDroid for";
+   echo -e "$PA_TAG $PA_MAJOR.$PA_MINOR";
+   echo -e "$PSD_TAG $PSD_MAJOR.$PSD_MINOR for $DEVICE";
+   echo -e "";
+   echo -e ""
  
 # make 'build-logs' directory if it doesn't already exist
-   echo -e "Making a 'build-logs' directory if you haven't already..."
+   echo -e "Making a 'build-logs' directory if you haven't already...";
    mkdir -p build-logs
  
 # fetch latest sources
-   echo -e "Fetching latest sources..."
+   echo -e "";
+   echo -e "";
+   echo -e "Fetching latest sources...";
    echo "Please select how many threads you would like to use to sync source:
          1) -j4
          2) -j8
@@ -78,6 +84,8 @@ DEVICE="$1"
          clear
 
 # Decide whether to build clean or dirty
+   echo -e "";
+   echo -e "";
    echo "Build clean or dirty:
          1) clean
          2) dirty"
@@ -93,11 +101,15 @@ DEVICE="$1"
          clear
  
 # invoke the environment setup script to start the building process
+   echo -e "";
+   echo -e "";
    echo -e "Setting up build environment..."
    . build/envsetup.sh
    clear
 
 # decide to build odex or deodex
+   echo -e "";
+   echo -e "";
    echo "Build odex or deodex:
          1) odex
          2) deodex"
@@ -113,6 +125,8 @@ DEVICE="$1"
          clear
  
 # execute the build while sending a log to 'build-logs'
+   echo -e "";
+   echo -e "";
    echo -e "Starting build...";
    echo "Please select how many threads you would like to use to build:
          1) -j4
@@ -121,13 +135,13 @@ DEVICE="$1"
          4) -j32"
       read n
          case $n in
-            1) make -j4 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date +%s.%N).txt
+            1) make -j4 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date).txt
                ;;
-            2) make -j8 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date +%s.%N).txt
+            2) make -j8 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date).txt
                ;;
-            3) make -j18 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date +%s.%N).txt
+            3) make -j18 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date).txt
                ;;
-            4) make -j32 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date +%s.%N).txt
+            4) make -j32 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date).txt
                ;;
             *) invalid option
                ;;
@@ -135,6 +149,10 @@ DEVICE="$1"
          clear
  
 # we're done
+   echo -e ""
+   echo -e ""
    echo -e "Finished building Paranoid SaberDroid.";
    echo -e "If for some reason your build failed,";
    echo -e "please check the 'build-logs' directory to figure out why."
+   echo -e ""
+   echo -e ""

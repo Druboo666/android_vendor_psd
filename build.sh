@@ -18,18 +18,6 @@
 # limitations under the License.
 #
 
-# Prepare output customization commands
-red=$(tput setaf 1)             #  red
-grn=$(tput setaf 2)             #  green
-blu=$(tput setaf 4)             #  blue
-cya=$(tput setaf 6)             #  cyan
-txtbld=$(tput bold)             # Bold
-bldred=${txtbld}$(tput setaf 1) #  red
-bldgrn=${txtbld}$(tput setaf 2) #  green
-bldblu=${txtbld}$(tput setaf 4) #  blue
-bldcya=${txtbld}$(tput setaf 6) #  cyan
-txtrst=$(tput sgr0)             # Reset
-
 # Get build version
    PA_MAJOR=$(cat $DIR/vendor/pa/vendor.mk | grep 'ROM_VERSION_MAJOR := *' | sed  's/ROM_VERSION_MAJOR := //g')
    PA_MINOR=$(cat $DIR/vendor/pa/vendor.mk | grep 'ROM_VERSION_MINOR := *' | sed  's/ROM_VERSION_MINOR := //g')
@@ -54,16 +42,16 @@ txtrst=$(tput sgr0)             # Reset
    fi
 
 DEVICE="$1"
-
+ 
 # start
    echo -e "Building Paranoid SaberDroid for $DEVICE";
    echo -e "Building AOSPAL $PSD_TAG $PSD_MAJOR.$PSD_MINOR for $DEVICE";
    echo -e "$Start time: $(date)"
-
+ 
 # make 'build-logs' directory if it doesn't already exist
    echo -e "Making a 'build-logs' directory if you haven't already..."
    mkdir -p build-logs
-
+ 
 # fetch latest sources
    echo -e "Fetching latest sources..."
    echo "Please select how many threads you would like to use to sync source:
@@ -87,7 +75,8 @@ DEVICE="$1"
             *) invalid option
                ;;
          esac
-      clear
+         clear
+
 # Decide whether to build clean or dirty
    echo "Build clean or dirty:
          1) clean
@@ -101,7 +90,8 @@ DEVICE="$1"
             *) invalid option
                ;;
          esac
-      clear
+         clear
+ 
 # invoke the environment setup script to start the building process
    echo -e "Setting up build environment..."
    . build/envsetup.sh
@@ -120,17 +110,31 @@ DEVICE="$1"
             *) invalid option
                ;;
          esac
-       clear
+         clear
+ 
 # execute the build while sending a log to 'build-logs'
-   echo -e "Starting build..."
-   make bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date +%s.%N).txt
-   clear
+   echo -e "Starting build...";
+   echo "Please select how many threads you would like to use to build:
+         1) -j4
+         2) -j8
+         3) -j18
+         4) -j32"
+      read n
+         case $n in
+            1) make -j4 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date +%s.%N).txt
+               ;;
+            2) make -j8 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date +%s.%N).txt
+               ;;
+            3) make -j18 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date +%s.%N).txt
+               ;;
+            4) make -j32 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date +%s.%N).txt
+               ;;
+            *) invalid option
+               ;;
+         esac
+         clear
  
 # we're done
    echo -e "Finished building Paranoid SaberDroid.";
    echo -e "If for some reason your build failed,";
    echo -e "please check the 'build-logs' directory to figure out why."
-   
-# Get elapsed time
-   res2=$(date +%s.%N)
-   echo -e "${bldgrn}Total time elapsed: ${txtrst}${grn}$(echo "($res2 - $res1) / 60"|bc ) minutes ($(echo "$res2 - $res1"|bc ) seconds)${txtrst}"

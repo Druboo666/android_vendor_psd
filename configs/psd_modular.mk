@@ -123,4 +123,11 @@ DISABLE_STRICT_MODULES += \
 STRICT_FLAGS := -fstrict-aliasing -Wstrict-aliasing=3 -Werror=strict-aliasing
 # end strict-aliasing
 
+# begin unused-parameter warning fix
+# This is a example of a unused-parameter error
+# error: unused parameter 'len' [-Werror=unused-parameter]
+# uncommented for now since there's no common warnings
+# NO_ERROR_UP :=
+# end unused-parameter waring fix
+
 # end generic MODULAR customizations

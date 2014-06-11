@@ -60,7 +60,7 @@ export GCC_COLORS := 'error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:
 SM_ARM_VERSION := $(filter 4.8 4.8.% 4.9 4.9.% 4.10 4.10.%,$(SM_ARM))
 SM_ARM_NAME := $(filter (SM-Toolchain) (SaberMod%),$(SM_ARM))
 SM_ARM_DATE := $(filter 20130% 20131% 20140% 20141%,$(SM_ARM))
-SM_ARM_STATUS := $(filter (release) (prerelease) (experimental), $(SM_ARM))
+SM_ARM_STATUS := $(filter (release) (prerelease) (experimental),$(SM_ARM))
 
 ifeq ($(filter (SaberMod%),$(SM_ARM)),)
 SM_ARM_VERSION := $(SM_ARM_NAME)_$(SM_ARM_VERSION)_$(SM_ARM_DATE)-$(SM_ARM_STATUS)

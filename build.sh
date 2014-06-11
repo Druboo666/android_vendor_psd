@@ -19,36 +19,34 @@
 #
 
 # Get build version
-   PA_MAJOR=$(cat $DIR/vendor/pa/vendor.mk | grep 'ROM_VERSION_MAJOR := *' | sed  's/ROM_VERSION_MAJOR := //g')
-   PA_MINOR=$(cat $DIR/vendor/pa/vendor.mk | grep 'ROM_VERSION_MINOR := *' | sed  's/ROM_VERSION_MINOR := //g')
-   PA_MAINTENANCE=$(cat $DIR/vendor/pa/vendor.mk | grep 'ROM_VERSION_MAINTENANCE := *' | sed  's/ROM_VERSION_MAINTENANCE := //g')
-   PA_TAG=$(cat $DIR/vendor/pa/vendor.mk | grep 'ROM_VERSION_TAG := *' | sed  's/ROM_VERSION_TAG := //g')
-
-   PSD_MAJOR=$(cat $DIR/vendor/psd/vendor.mk | grep 'PSD_VERSION_MAJOR := *' | sed  's/PSD_VERSION_MAJOR := //g')
-   PSD_MINOR=$(cat $DIR/vendor/psd/vendor.mk | grep 'PSD_VERSION_MINOR := *' | sed  's/PSD_VERSION_MINOR := //g')
-   PSD_MAINTENANCE=$(cat $DIR/vendor/psd/vendor.mk | grep 'PSD_VERSION_MAINTENANCE := *' | sed  's/PSD_VERSION_MAINTENANCE := //g')
-   PSD_TAG=$(cat $DIR/vendor/psd/vendor.mk | grep 'PSD_TYPE := *' | sed  's/PSD_TYPE := //g')
-
-   if [ -n "$PA_TAG" ]; then
-      VERSION=$MAJOR.$MINOR$MAINTENANCE-$TAG
-   else
-      VERSION=$MAJOR.$MINOR$MAINTENANCE
-   fi
-
-   if [ -n "$PSD_TAG" ]; then
-      PSD_VERSION=$PSD_MAINTENANCE-$PSD_TAG-$PSD_MAJOR.$PSD_MINOR
-   else
-      PSD_VERSION=$PSD_MAINTENANCE-$PSD_MAJOR.$PSD_MINOR
-   fi
+#   PA_MAJOR=$(cat $DIR/vendor/pa/vendor.mk | grep 'ROM_VERSION_MAJOR := *' | sed  's/ROM_VERSION_MAJOR := //g')
+#   PA_MINOR=$(cat $DIR/vendor/pa/vendor.mk | grep 'ROM_VERSION_MINOR := *' | sed  's/ROM_VERSION_MINOR := //g')
+#   PA_MAINTENANCE=$(cat $DIR/vendor/pa/vendor.mk | grep 'ROM_VERSION_MAINTENANCE := *' | sed  's/ROM_VERSION_MAINTENANCE := //g')
+#   PA_TAG=$(cat $DIR/vendor/pa/vendor.mk | grep 'ROM_VERSION_TAG := *' | sed  's/ROM_VERSION_TAG := //g')
+#
+#   PSD_MAJOR=$(cat $DIR/vendor/psd/vendor.mk | grep 'PSD_VERSION_MAJOR := *' | sed  's/PSD_VERSION_MAJOR := //g')
+#   PSD_MINOR=$(cat $DIR/vendor/psd/vendor.mk | grep 'PSD_VERSION_MINOR := *' | sed  's/PSD_VERSION_MINOR := //g')
+#   PSD_MAINTENANCE=$(cat $DIR/vendor/psd/vendor.mk | grep 'PSD_VERSION_MAINTENANCE := *' | sed  's/PSD_VERSION_MAINTENANCE := //g')
+#   PSD_TAG=$(cat $DIR/vendor/psd/vendor.mk | grep 'PSD_TYPE := *' | sed  's/PSD_TYPE := //g')
+#
+#   if [ -n "$PA_TAG" ]; then
+#      VERSION=$MAJOR.$MINOR$MAINTENANCE-$TAG
+#   else
+#      VERSION=$MAJOR.$MINOR$MAINTENANCE
+#   fi
+#
+#   if [ -n "$PSD_TAG" ]; then
+#      PSD_VERSION=$PSD_MAINTENANCE-$PSD_TAG-$PSD_MAJOR.$PSD_MINOR
+#   else
+#      PSD_VERSION=$PSD_MAINTENANCE-$PSD_MAJOR.$PSD_MINOR
+#   fi
 
 DEVICE="$1"
  
 # start
-   echo -e "";
-   echo -e "";
-   echo -e "Building Paranoid SaberDroid for";
-   echo -e "$PA_TAG $PA_MAJOR.$PA_MINOR";
-   echo -e "$PSD_TAG $PSD_MAJOR.$PSD_MINOR for $DEVICE";
+   echo -e "Building Paranoid SaberDroid for $DEVICE";
+#   echo -e "$PA_TAG $PA_MAJOR.$PA_MINOR";
+#   echo -e "$PSD_TAG $PSD_MAJOR.$PSD_MINOR for $DEVICE";
    echo -e "";
    echo -e ""
  
@@ -57,8 +55,6 @@ DEVICE="$1"
    mkdir -p build-logs
  
 # fetch latest sources
-   echo -e "";
-   echo -e "";
    echo -e "Fetching latest sources...";
    echo "Please select how many threads you would like to use to sync source:
          1) -j4
@@ -84,8 +80,6 @@ DEVICE="$1"
          clear
 
 # Decide whether to build clean or dirty
-   echo -e "";
-   echo -e "";
    echo "Build clean or dirty:
          1) clean
          2) dirty"
@@ -101,8 +95,6 @@ DEVICE="$1"
          clear
  
 # invoke the environment setup script to start the building process
-   echo -e "";
-   echo -e "";
    echo -e "Setting up build environment..."
    . build/envsetup.sh
    clear
@@ -125,8 +117,6 @@ DEVICE="$1"
          clear
  
 # execute the build while sending a log to 'build-logs'
-   echo -e "";
-   echo -e "";
    echo -e "Starting build...";
    echo "Please select how many threads you would like to use to build:
          1) -j4
@@ -149,8 +139,6 @@ DEVICE="$1"
          clear
  
 # we're done
-   echo -e "";
-   echo -e "";
    echo -e "Finished building Paranoid SaberDroid.";
    echo -e "If for some reason your build failed,";
    echo -e "please check the 'build-logs' directory to figure out why.";

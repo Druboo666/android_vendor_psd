@@ -1,6 +1,6 @@
 ifeq (psd_hammerhead,$(TARGET_PRODUCT))
 # Use 4.10.x for the kernel
-GCC_VERSION_ARM := 4.10
+GCC_VERSION_ARM := 4.9
 # Override ARM settings
 SM_ARM_PATH := prebuilts/gcc/$(HOST_PREBUILT_TAG)/arm/arm-eabi-$(GCC_VERSION_ARM)
 SM_ARM := $(shell $(SM_ARM_PATH)/bin/arm-eabi-gcc --version)

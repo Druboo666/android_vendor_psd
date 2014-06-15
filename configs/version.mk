@@ -1,11 +1,15 @@
-ifneq ($PSD_TYPE,"")
+ifneq ($(PSD_TYPE),)
         PSD_VERSION := $(PSD_TYPE)-V$(PSD_VERSION_MAJOR).$(PSD_VERSION_MINOR)-$(PSD_VERSION_MAINTENANCE)
 else
         PSD_VERSION := V$(PSD_VERSION_MAJOR).$(PSD_VERSION_MINOR)-$(PSD_VERSION_MAINTENANCE)
 endif
 
 export BUILD_DATE := $(shell date -u +%Y%m%d)
-export PSD_BUILD_NAME := $(PSD_VERSION)-$(BUILD_DATE)
+ifneq ($(TARGET_BUILD_VARIANT),user)
+        export PSD_BUILD_NAME := $(PSD_VERSION)-$(BUILD_DATE)
+else
+        export PSD_BUILD_NAME := $(PSD_VERSION)-$(BUILD_DATE)-ODEX
+endif
 
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.$(VENDOR_PSD).version=$(PSD_VERSION)
+    ro.$(VENDOR).version=$(PSD_VERSION)

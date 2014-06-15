@@ -1,3 +1,5 @@
+ifeq (psd_falcon,$(TARGET_PRODUCT))
+
 # Use 4.10.x for the kernel
 GCC_VERSION_ARM := 4.10
 # Override ARM settings
@@ -18,10 +20,15 @@ SM_ARM_VERSION := $(SM_ARM_NAME)-$(SM_ARM_DATE)-$(SM_ARM_STATUS)
 endif
 endif
 
+include vendor/psd/configs/psd_modular.mk
+
 ifneq ($(SM_ARM_VERSION),)
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.arm=$(SM_ARM_VERSION)
 endif
+
+# Include Paranoid SaberDroid common configuration
+include vendor/psd/main.mk
 
 # Set -fstrict-aliasing flag to global
 MAKE_STRICT_GLOBAL := true
@@ -31,3 +38,21 @@ OPT_MEMORY := true
 ENABLE_GRAPHITE := true
 # Saber linux toolchains
 USING_SABER_LINUX := yes
+
+# Call pa device
+$(call inherit-product, vendor/pa/products/pa_falcon.mk)
+
+# Inherit device configuration
+$(call inherit-product, device/motorola/falcon/full_falcon.mk)
+
+# Override AOSP build properties
+PRODUCT_NAME := psd_falcon
+PRODUCT_DEVICE := falcon
+PRODUCT_BRAND := motorola
+PRODUCT_MANUFACTURER := motorola
+PRODUCT_MODEL := falcon
+
+# Set build fingerprint / ID / Product Name ect.
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=falcon TARGET_DEVICE=falcon
+
+endif

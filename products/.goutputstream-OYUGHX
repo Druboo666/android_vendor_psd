@@ -13,7 +13,7 @@ ENABLE_GRAPHITE := true
 # Saber linux toolchains
 USING_SABER_LINUX := yes
 
-# Set -fstrict-aliasing flag to global for hammerhead (for real this time)
+# Set -fstrict-aliasing flag to global for mako (for real this time)
 MAKE_STRICT_GLOBAL := true
 
 # Call pa device

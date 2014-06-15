@@ -50,6 +50,9 @@ USING_SABER_LINUX := yes
 # Include Paranoid SaberDroid common configuration
 include vendor/psd/main.mk
 
+# Call pa device
+$(call inherit-product, vendor/pa/products/pa_flo.mk)
+
 # Inherit AOSP device configuration
 $(call inherit-product, device/asus/flo/full_flo.mk)
 

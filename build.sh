@@ -42,7 +42,7 @@
 #   fi
 
 DEVICE="$1"
-timestamp=$(date +%s)
+timestamp="$(date +%s)"
  
 # start
    echo -e "Building Paranoid SaberDroid for $DEVICE";
@@ -126,13 +126,13 @@ timestamp=$(date +%s)
          4) -j32"
       read n
          case $n in
-            1) make -j4 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(timestamp).txt
+            1) make -j4 bacon 2>&1 | tee build-logs/psd_$DEVICE-$timestamp.txt
                ;;
-            2) make -j8 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(timestamp).txt
+            2) make -j8 bacon 2>&1 | tee build-logs/psd_$DEVICE-$timestamp.txt
                ;;
-            3) make -j18 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(timestamp).txt
+            3) make -j18 bacon 2>&1 | tee build-logs/psd_$DEVICE-$timestamp.txt
                ;;
-            4) make -j32 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(timestamp).txt
+            4) make -j32 bacon 2>&1 | tee build-logs/psd_$DEVICE-$timestamp.txt
                ;;
             *) invalid option
                ;;

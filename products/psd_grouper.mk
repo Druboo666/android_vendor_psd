@@ -4,6 +4,15 @@ include vendor/psd/configs/psd_modular.mk
 # Include Paranoid SaberDroid common configuration
 include vendor/psd/main.mk
 
+# Set -fstrict-aliasing flag to global for flo
+MAKE_STRICT_GLOBAL := true
+# Optimize memory
+OPT_MEMORY := true
+# Enable graphite
+ENABLE_GRAPHITE := true
+# Saber linux toolchains
+USING_SABER_LINUX := yes
+
 # Call pa device
 $(call inherit-product, vendor/pa/products/pa_grouper.mk)
 

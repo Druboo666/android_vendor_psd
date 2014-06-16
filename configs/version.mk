@@ -5,10 +5,8 @@ else
 endif
 
 export BUILD_DATE := $(shell date -u +%Y%m%d)
-ifneq ($(TARGET_BUILD_VARIANT),user)
-        export PSD_BUILD_NAME := $(PSD_VERSION)-$(BUILD_DATE)
-else
-        export PSD_BUILD_NAME := $(PSD_VERSION)-$(BUILD_DATE)-ODEX
+ifeq ($(TARGET_BUILD_VARIANT),user)
+        export ODEX_BUILD := true
 endif
 
 PRODUCT_PROPERTY_OVERRIDES += \

@@ -9,5 +9,8 @@ ifeq ($(TARGET_BUILD_VARIANT),user)
         export ODEX_BUILD := true
 endif
 
+PSD_MOD_VERSION := $(PSD_VERSION)-$(BUILD_DATE)
+
 PRODUCT_PROPERTY_OVERRIDES += \
-    ro.$(VENDOR).version=$(PSD_VERSION)
+    ro.$(VENDOR).version=$(PSD_VERSION) \
+    ro.$(VENDOR).modversion=$(PSD_MOD_VERSION)

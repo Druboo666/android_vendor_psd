@@ -12,7 +12,7 @@ add_lunch_combo psd_edison-userdebug
 add_lunch_combo psd_enrc2b-userdebug
 add_lunch_combo psd_evita-userdebug
 add_lunch_combo psd_falcon-userdebug
-add_lunch_combo psd_find7a-userdebug
+add_lunch_combo psd_find7-userdebug
 add_lunch_combo psd_galaxysmtd-userdebug
 add_lunch_combo psd_gee-userdebug
 add_lunch_combo psd_geeb-userdebug

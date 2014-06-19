@@ -1,4 +1,4 @@
-ifeq (psd_pollux_windy,$(TARGET_PRODUCT))
+ifeq (psd_pollux,$(TARGET_PRODUCT))
 
 # Use 4.9.x for the kernel
 GCC_VERSION_ARM := 4.9
@@ -48,14 +48,14 @@ include vendor/psd/main.mk
 $(call inherit-product, vendor/pa/products/pa_pollux_windy.mk)
 
 # Inherit device configuration
-$(call inherit-product, device/sony/pollux_windy/full_pollux_windy.mk)
+$(call inherit-product, device/sony/pollux/full_pollux.mk)
 
 # Override AOSP build properties
-PRODUCT_NAME := psd_pollux_windy
-PRODUCT_DEVICE := pollux_windy
+PRODUCT_NAME := psd_pollux
+PRODUCT_DEVICE := pollux
 PRODUCT_BRAND := sony
 PRODUCT_MANUFACTURER := Sony 
-PRODUCT_MODEL := SGP311
-PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=SGP311 TARGET_DEVICE=pollux_windy BUILD_FINGERPRINT=Sony/SGP311/SGP311:4.4/10.5.A.0.230/eng.hudsonslave:user/release-keys PRIVATE_BUILD_DESC="SGP311-user 4.4 RHINE-1.1-131125-1201 eng.hudsonslave test-keys"
+PRODUCT_MODEL := SGP321
+PRODUCT_BUILD_PROP_OVERRIDES += PRODUCT_NAME=SGP321 TARGET_DEVICE=pollux BUILD_FINGERPRINT=Sony/SGP321/SGP321:4.4/10.5.A.0.230/eng.hudsonslave:user/release-keys PRIVATE_BUILD_DESC="SGP321-user 4.4 RHINE-1.1-131125-1201 eng.hudsonslave"
     
 endif

@@ -10,10 +10,8 @@ export BUILD_DATE := $(shell date -u +%Y%m%d)
 ifeq ($(TARGET_BUILD_VARIANT),user)
         export ODEX_BUILD := true
 endif
-export PSD_BUILD_NAME := $(ROM_NAME)
-
-PSD_MOD_VERSION := $(PSD_VERSION)-$(BUILD_DATE)
+export PSD_BUILD_NAME := $(ROM_NAME)-$(BUILD_DATE)
 
 PRODUCT_PROPERTY_OVERRIDES += \
     ro.$(VENDOR).version=$(PSD_VERSION) \
-    ro.$(VENDOR).modversion=$(PSD_MOD_VERSION)
+    ro.$(VENDOR).modversion=$(PSD_BUILD_NAME)

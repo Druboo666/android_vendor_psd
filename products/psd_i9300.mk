@@ -2,6 +2,14 @@ ifeq (psd_i9300,$(TARGET_PRODUCT))
 
 include vendor/psd/configs/psd_modular.mk
 
+# Disable strict aliasing modules
+DISABLE_STRICT_MODULES += \
+        audio.primary.smdk4x12 \
+        static_busybox
+
+DISABLE_STRICT_MODULES := \
+                $(DISABLE_STRICT_MODULES)
+
 # Include Paranoid SaberDroid common configuration
 include vendor/psd/main.mk
 

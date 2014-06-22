@@ -54,8 +54,8 @@ endif
 ifeq (psd_falcon,$(TARGET_PRODUCT))
     PRODUCT_MAKEFILES += $(LOCAL_DIR)/psd_falcon.mk
 endif
-ifeq (psd_find7a,$(TARGET_PRODUCT))
-    PRODUCT_MAKEFILES += $(LOCAL_DIR)/psd_find7a.mk
+ifeq (psd_find7,$(TARGET_PRODUCT))
+    PRODUCT_MAKEFILES += $(LOCAL_DIR)/psd_find7.mk
 endif
 ifeq (psd_galaxysmtd,$(TARGET_PRODUCT))
     PRODUCT_MAKEFILES += $(LOCAL_DIR)/psd_galaxysmtd.mk
@@ -185,6 +185,9 @@ ifeq (psd_p3110,$(TARGET_PRODUCT))
 endif
 ifeq (psd_pollux_windy,$(TARGET_PRODUCT))
     PRODUCT_MAKEFILES += $(LOCAL_DIR)/psd_pollux_windy.mk
+endif
+ifeq (psd_pollux,$(TARGET_PRODUCT))
+    PRODUCT_MAKEFILES += $(LOCAL_DIR)/psd_pollux.mk
 endif
 ifeq (psd_serano3gxx,$(TARGET_PRODUCT))
     PRODUCT_MAKEFILES += $(LOCAL_DIR)/psd_serrano3gxx.mk

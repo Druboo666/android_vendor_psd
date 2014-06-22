@@ -82,6 +82,11 @@ DISABLE_STRICT_MODULES := \
 	libdownmix \
 	libvisualizer \
 	libuclibcrpc \
+	libvold \
+	libfuse \
+	libcurl \
+	libqsap_sdk \
+	tcpdump \
 	libcrypto_static \
         libbusybox \
         recovery_e2fsck \

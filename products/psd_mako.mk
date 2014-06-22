@@ -1,9 +1,6 @@
 ifeq (psd_mako,$(TARGET_PRODUCT))
 include vendor/psd/configs/psd_modular.mk
 
-# Include Paranoid SaberDroid common configuration
-include vendor/psd/main.mk
-
 # Optimize memory
 OPT_MEMORY := true
 
@@ -15,6 +12,9 @@ USING_SABER_LINUX := yes
 
 # Set -fstrict-aliasing flag to global for mako (for real this time)
 MAKE_STRICT_GLOBAL := true
+
+# Include Paranoid SaberDroid common configuration
+include vendor/psd/main.mk
 
 # Call pa device
 $(call inherit-product, vendor/pa/products/pa_mako.mk)

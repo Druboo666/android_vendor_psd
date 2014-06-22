@@ -1,8 +1,6 @@
 ifeq (psd_grouper,$(TARGET_PRODUCT))
-include vendor/psd/configs/psd_modular.mk
 
-# Include Paranoid SaberDroid common configuration
-include vendor/psd/main.mk
+include vendor/psd/configs/psd_modular.mk
 
 # Set -fstrict-aliasing flag to global for flo
 MAKE_STRICT_GLOBAL := true
@@ -12,6 +10,9 @@ OPT_MEMORY := true
 ENABLE_GRAPHITE := true
 # Saber linux toolchains
 USING_SABER_LINUX := yes
+
+# Include Paranoid SaberDroid common configuration
+include vendor/psd/main.mk
 
 # Call pa device
 $(call inherit-product, vendor/pa/products/pa_grouper.mk)

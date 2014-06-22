@@ -27,9 +27,6 @@ PRODUCT_PROPERTY_OVERRIDES += \
     ro.sm.arm=$(SM_ARM_VERSION)
 endif
 
-DISABLE_STRICT_MODULES += \
-        libfuse
-
 # Include Paranoid SaberDroid common configuration
 include vendor/psd/main.mk
 

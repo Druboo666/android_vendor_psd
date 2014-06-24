@@ -1,7 +1,8 @@
 #!/bin/bash
 
 #
-# Created by Michael S Corigliano for Team AOSPAL (michael.s.corigliano@gmail.com)
+# Implemented by Michael S Corigliano for Team AOSPAL (michael.s.corigliano@gmail.com)
+#
 # Parts of the original AOSPA build script have also been implemented in this script,
 # it can be found here: https://www.github.com/AOSPA/android_vendor_pa/build.sh
 #
@@ -18,37 +19,40 @@
 # limitations under the License.
 #
 
-# Get build version
-#   PA_MAJOR=$(cat $DIR/vendor/pa/vendor.mk | grep 'ROM_VERSION_MAJOR := *' | sed  's/ROM_VERSION_MAJOR := //g')
-#   PA_MINOR=$(cat $DIR/vendor/pa/vendor.mk | grep 'ROM_VERSION_MINOR := *' | sed  's/ROM_VERSION_MINOR := //g')
-#   PA_MAINTENANCE=$(cat $DIR/vendor/pa/vendor.mk | grep 'ROM_VERSION_MAINTENANCE := *' | sed  's/ROM_VERSION_MAINTENANCE := //g')
-#   PA_TAG=$(cat $DIR/vendor/pa/vendor.mk | grep 'ROM_VERSION_TAG := *' | sed  's/ROM_VERSION_TAG := //g')
-#
-#   PSD_MAJOR=$(cat $DIR/vendor/psd/vendor.mk | grep 'PSD_VERSION_MAJOR := *' | sed  's/PSD_VERSION_MAJOR := //g')
-#   PSD_MINOR=$(cat $DIR/vendor/psd/vendor.mk | grep 'PSD_VERSION_MINOR := *' | sed  's/PSD_VERSION_MINOR := //g')
-#   PSD_MAINTENANCE=$(cat $DIR/vendor/psd/vendor.mk | grep 'PSD_VERSION_MAINTENANCE := *' | sed  's/PSD_VERSION_MAINTENANCE := //g')
-#   PSD_TAG=$(cat $DIR/vendor/psd/vendor.mk | grep 'PSD_TYPE := *' | sed  's/PSD_TYPE := //g')
-#
-#   if [ -n "$PA_TAG" ]; then
-#      VERSION=$MAJOR.$MINOR$MAINTENANCE-$TAG
-#   else
-#      VERSION=$MAJOR.$MINOR$MAINTENANCE
-#   fi
-#
-#   if [ -n "$PSD_TAG" ]; then
-#      PSD_VERSION=$PSD_MAINTENANCE-$PSD_TAG-$PSD_MAJOR.$PSD_MINOR
-#   else
-#      PSD_VERSION=$PSD_MAINTENANCE-$PSD_MAJOR.$PSD_MINOR
-#   fi
+# We don't allow scrollback buffer
+echo -e '\0033\0143'
+clear
 
+# Prepare output customization commands
+   red=$(tput setaf 1)             #  red
+   grn=$(tput setaf 2)             #  green
+   blu=$(tput setaf 4)             #  blue
+   cya=$(tput setaf 6)             #  cyan
+   txtbld=$(tput bold)             # Bold
+   bldred=${txtbld}$(tput setaf 1) #  red
+   bldgrn=${txtbld}$(tput setaf 2) #  green
+   bldblu=${txtbld}$(tput setaf 4) #  blue
+   bldcya=${txtbld}$(tput setaf 6) #  cyan
+   txtrst=$(tput sgr0)             # Reset
+
+# if there is more than one jdk installed, use latest 6.x
+   if [ "`update-alternatives --list javac | wc -l`" -gt 1 ]; then
+      JDK6=$(dirname `update-alternatives --list javac | grep "\-6\-"` | tail -n1)
+      JRE6=$(dirname ${JDK6}/../jre/bin/java)
+      export PATH=${JDK6}:${JRE6}:$PATH
+   fi
+   JVER=$(javac -version  2>&1 | head -n1 | cut -f2 -d' ')
+
+# definitions
 DEVICE="$1"
 timestamp="$(date +%s)"
+
+# Get start time
+res1=$(date +%s.%N)
  
 # start
    echo -e "Building Paranoid SaberDroid for $DEVICE";
-#   echo -e "$PA_TAG $PA_MAJOR.$PA_MINOR";
-#   echo -e "$PSD_TAG $PSD_MAJOR.$PSD_MINOR for $DEVICE";
-   echo -e "";
+   echo -e "$(date)";
    echo -e ""
  
 # make 'build-logs' directory if it doesn't already exist
@@ -101,8 +105,6 @@ timestamp="$(date +%s)"
    clear
 
 # decide to build odex or deodex
-   echo -e "";
-   echo -e "";
    echo "Build odex or deodex:
          1) odex
          2) deodex"
@@ -126,19 +128,22 @@ timestamp="$(date +%s)"
          4) -j32"
       read n
          case $n in
-            1) make -j4 bacon 2>&1 | tee build-logs/psd_$DEVICE-$timestamp.txt
+            1) make -j4 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date).txt
                ;;
-            2) make -j8 bacon 2>&1 | tee build-logs/psd_$DEVICE-$timestamp.txt
+            2) make -j8 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date).txt
                ;;
-            3) make -j18 bacon 2>&1 | tee build-logs/psd_$DEVICE-$timestamp.txt
+            3) make -j18 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date).txt
                ;;
-            4) make -j32 bacon 2>&1 | tee build-logs/psd_$DEVICE-$timestamp.txt
+            4) make -j32 bacon 2>&1 | tee build-logs/psd_$DEVICE-$(date).txt
                ;;
             *) invalid option
                ;;
          esac
  
 # we're done
+# Get elapsed time
+res2=$(date +%s.%N)
+   echo -e "${bldgrn}Total time elapsed: ${txtrst}${grn}$(echo "($res2 - $res1) / 60"|bc ) minutes ($(echo "$res2 - $res1"|bc ) seconds)${txtrst}"
    echo -e "Finished building Paranoid SaberDroid.";
    echo -e "If for some reason your build failed,";
    echo -e "please check the 'build-logs' directory to figure out why.";

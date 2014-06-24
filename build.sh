@@ -19,11 +19,11 @@
 # limitations under the License.
 #
 
-# We don't allow scrollback buffer
-echo -e '\0033\0143'
-clear
+# we don't allow scrollback buffer
+   echo -e '\0033\0143'
+   clear
 
-# Prepare output customization commands
+# prepare output customization commands
    red=$(tput setaf 1)             #  red
    grn=$(tput setaf 2)             #  green
    blu=$(tput setaf 4)             #  blue
@@ -45,9 +45,8 @@ clear
 
 # definitions
 DEVICE="$1"
-timestamp="$(date +%s)"
 
-# Get start time
+# get start time
 res1=$(date +%s.%N)
  
 # start
@@ -139,10 +138,11 @@ res1=$(date +%s.%N)
             *) invalid option
                ;;
          esac
- 
-# we're done
+
 # Get elapsed time
-res2=$(date +%s.%N)
+   res2=$(date +%s.%N)
+
+# we're done
    echo -e "${bldgrn}Total time elapsed: ${txtrst}${grn}$(echo "($res2 - $res1) / 60"|bc ) minutes ($(echo "$res2 - $res1"|bc ) seconds)${txtrst}"
    echo -e "Finished building Paranoid SaberDroid.";
    echo -e "If for some reason your build failed,";

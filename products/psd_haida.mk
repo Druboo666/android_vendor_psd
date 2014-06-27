@@ -25,6 +25,16 @@ include vendor/psd/configs/psd_modular.mk
 # Include Paranoid SaberDroid common configuration
 include vendor/psd/main.mk
 
+# Disable strict aliasing modules
+DISABLE_STRICT_MODULES += \
+	librpc \
+	static_busybox \
+	libandroid_runtime \
+	mm-vdec-omx-test
+
+DISABLE_STRICT_MODULES := \
+		$(DISABLE_STRICT_MODULES)
+
 # Set -fstrict-aliasing flag to global
 MAKE_STRICT_GLOBAL := true
 
@@ -32,7 +42,13 @@ MAKE_STRICT_GLOBAL := true
 OPT_MEMORY := true
 
 #Enable Graphite OPT
-ENABLE_GRAPHITE := false
+ENABLE_GRAPHITE := true
+
+# Saber linux toolchains
+USING_SABER_LINUX := yes
+
+#EXPERIMENTAL_OPTIMIZATION
+EXPERIMENTAL_OPTIMIZATION := true
 
 # Call pa device
 $(call inherit-product, vendor/pa/products/pa_haida.mk)

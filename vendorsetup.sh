@@ -1,6 +1,6 @@
 add_lunch_combo psd_a510-userdebug
 add_lunch_combo psd_a700-userdebug
-add_lunch-combo psd_bacon-userdebug
+add_lunch_combo psd_bacon-userdebug
 add_lunch_combo psd_d2lte-userdebug
 add_lunch_combo psd_d800-userdebug
 add_lunch_combo psd_d801-userdebug

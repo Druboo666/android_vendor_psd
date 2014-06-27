@@ -39,7 +39,8 @@ USING_SABER_LINUX := yes
 # Specific module list
 DISABLE_STRICT_MODULES += \
 	static_busybox \
-	audio.primary.msm8960
+	audio.primary.msm8960 \
+	mm-vdec-omx-test
 
 # Include Paranoid SaberDroid common configuration
 include vendor/psd/main.mk

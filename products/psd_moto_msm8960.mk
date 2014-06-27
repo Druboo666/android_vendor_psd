@@ -30,29 +30,31 @@ endif
 # Include Paranoid SaberDroid common configuration
 include vendor/psd/main.mk
 
+# Set -fstrict-aliasing flag to global
+MAKE_STRICT_GLOBAL := true
 # Optimize memory
 OPT_MEMORY := true
-
 # Enable graphite
 ENABLE_GRAPHITE := true
-
 # Saber linux toolchains
 USING_SABER_LINUX := yes
-
-# Set -fstrict-aliasing flag to global for moto_msm8960
-MAKE_STRICT_GLOBAL := true
 
 # Call pa device
 $(call inherit-product, vendor/pa/products/pa_moto_msm8960.mk)
 
-# Inherit AOSP device configuration
+# Inherit device configuration
 $(call inherit-product, device/motorola/moto_msm8960/full_moto_msm8960.mk)
 
 # Override AOSP build properties
 PRODUCT_DEVICE := moto_msm8960
 PRODUCT_NAME := psd_moto_msm8960
 PRODUCT_BRAND := motorola
-PRODUCT_MODEL := xt926
+PRODUCT_MODEL := MOTOROLA MSM8960
 PRODUCT_MANUFACTURER := motorola
+
+# Set build fingerprint / ID / Product Name ect.
+PRODUCT_BUILD_PROP_OVERRIDES += \
+    PRODUCT_NAME=motorola \
+    TARGET_DEVICE=moto_msm8960
 
 endif
